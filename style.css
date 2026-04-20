@@ -206,16 +206,19 @@ a {
   }
 
   /* Suppress all on-card overlay text & hover effects on mobile */
-  .credit-card__overlay {
-    display: none;
+  .credit-card__overlay,
+  .credit-card.is-active .credit-card__overlay,
+  .credit-card:hover .credit-card__overlay {
+    display: none !important;
+    opacity: 0 !important;
   }
 
   .credit-card:hover .credit-card__artwork-wrap img,
   .credit-card.is-active .credit-card__artwork-wrap img,
   .credit-card:hover .credit-card__artwork-placeholder,
   .credit-card.is-active .credit-card__artwork-placeholder {
-    filter: none;
-    transform: none;
+    filter: none !important;
+    transform: none !important;
   }
 }
 
@@ -255,12 +258,11 @@ a {
 }
 
 .credit-card:hover .credit-card__artwork-wrap img,
-.credit-card.is-active .credit-card__artwork-wrap img,
-.credit-card:hover .credit-card__artwork-placeholder,
-.credit-card.is-active .credit-card__artwork-placeholder {
+.credit-card:hover .credit-card__artwork-placeholder {
   filter: blur(6px) brightness(0.3);
   transform: scale(1.04);
 }
+
 
 /* Overlay */
 .credit-card__overlay {
@@ -274,10 +276,10 @@ a {
   transition: opacity 0.35s ease;
 }
 
-.credit-card:hover .credit-card__overlay,
-.credit-card.is-active .credit-card__overlay {
+.credit-card:hover .credit-card__overlay {
   opacity: 1;
 }
+
 
 .credit-card__overlay-inner {
   text-align: center;
@@ -315,12 +317,9 @@ a {
 }
 
 .credit-card__songs-wrap {
-  overflow: hidden;
-  max-height: calc(5 * 0.6rem * 1.9 + 0.6rem + 1px);
-  margin-top: 0.75rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 0.6rem;
+  display: none;
 }
+
 
 .credit-card__songs {
   list-style: none;
@@ -328,7 +327,6 @@ a {
   margin: 0;
 }
 
-.credit-card:hover .credit-card__songs,
 .credit-card.is-active .credit-card__songs {
   animation: scroll-songs var(--song-scroll-dur, 3s) ease-in-out infinite;
   animation-delay: 0.6s;
@@ -518,16 +516,17 @@ a {
   position: fixed;
   inset: 0;
   z-index: 200;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.28s ease;
 }
 
 .credit-modal.is-open {
-  display: flex;
   opacity: 1;
+  pointer-events: auto;
 }
 
 .credit-modal__backdrop {
@@ -613,8 +612,46 @@ a {
   margin-top: 0.2rem;
 }
 
+.credit-modal__songs-wrap {
+  margin-top: 1rem;
+  max-height: 120px;
+  overflow-y: auto;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 0.75rem;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  transition: mask-image 0.25s ease, -webkit-mask-image 0.25s ease;
+}
+
+.credit-modal__songs-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.credit-modal__songs-wrap.is-scrolled-end {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.credit-modal__songs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.credit-modal__song {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
 .credit-modal__spotify-wrap {
-  margin-top: 1.4rem;
+  margin-top: 1.2rem;
 }
 
 .credit-modal__spotify {

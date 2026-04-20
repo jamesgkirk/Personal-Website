@@ -148,7 +148,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/album/6pKaUDUnQiZgWLPZJqwkzn"
   },
   {
-    artist: "Leon Bridges, Jazmine Sullivan",
+    artist: "Leon Bridges",
     title: "Summer Rain (feat. Jazmine Sullivan)",
     album: "Gold-Diggers Sound (Deluxe)",
     role: "Assistant Engineer",
@@ -157,7 +157,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/album/6pKaUDUnQiZgWLPZJqwkzn"
   },
   {
-    artist: "Leon Bridges, Ink",
+    artist: "Leon Bridges",
     title: "Don't Worry (feat. Ink)",
     album: "Gold-Diggers Sound",
     role: "Assistant Engineer",
@@ -195,7 +195,7 @@ export const CREDITS = [
 
   // ── MAETA / FREE NATIONALS ───────────────────────────────
   {
-    artist: "Maeta, Free Nationals",
+    artist: "Maeta",
     title: "Through The Night",
     album: "Through The Night",
     role: "Recording Engineer",
@@ -226,7 +226,7 @@ export const CREDITS = [
 
   // ── JOJO / MAHALIA ───────────────────────────────────────
   {
-    artist: "JoJo, Mahalia",
+    artist: "Mahalia",
     title: "Cheat (feat. JoJo)",
     album: "Cheat (feat. JoJo)",
     role: "Additional Vocal Recording Engineer",
@@ -273,7 +273,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/album/2sdEcm60h3HBZkd5k7SkRh"
   },
   {
-    artist: "Jean Dawson, bones",
+    artist: "Jean Dawson",
     title: "P4IN",
     album: "Glimmer of God",
     role: "Recording Engineer",
@@ -392,7 +392,7 @@ export const CREDITS = [
 
   // ── MGMT / CHRISTINE AND THE QUEENS ──────────────────────
   {
-    artist: "MGMT, Christine And The Queens",
+    artist: "MGMT",
     title: "Dancing In Babylon (feat. Christine and the Queens)",
     album: "Loss Of Life",
     role: "Engineer",
@@ -452,7 +452,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/track/2EHb8zJl4EsTM7jPW0oM8w"
   },
   {
-    artist: "Nnena, Bijan",
+    artist: "Nnena",
     title: "ECSTASY (feat. Bijan)",
     album: "A WOMAN'S MIND",
     role: "Mixing Engineer",
@@ -470,7 +470,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/album/3JpiIHgtV0RtAW4l9h656F"
   },
   {
-    artist: "Nnena, DRAM",
+    artist: "Nnena",
     title: "NO GAMES (feat. DRAM)",
     album: "A WOMAN'S MIND",
     role: "Mixing Engineer",
@@ -479,7 +479,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
   },
   {
-    artist: "Nnena, Childish Major",
+    artist: "Nnena",
     title: "HOLD ME TIGHT (feat. Childish Major)",
     album: "A WOMAN'S MIND",
     role: "Mixing Engineer",
@@ -506,7 +506,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
   },
   {
-    artist: "Nnena, B.K. Habermehl",
+    artist: "Nnena",
     title: "GREYSWEATSUIT (feat. B.K. Habermehl)",
     album: "A WOMAN'S MIND",
     role: "Mixing Engineer",
@@ -551,7 +551,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
   },
   {
-    artist: "Nnena, Justina Ego Adigwe",
+    artist: "Nnena",
     title: "TO FRIEND / FOE (feat. Justina Ego Adigwe)",
     album: "A WOMAN'S MIND",
     role: "Mixing Engineer",
@@ -560,7 +560,7 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
   },
   {
-    artist: "Nnena, Chidera Ike",
+    artist: "Nnena",
     title: "GOLD DIGGERS OUTRO (feat. Chidera Ike)",
     album: "A WOMAN'S MIND",
     role: "Mixing Engineer",
@@ -629,7 +629,7 @@ export const CREDITS = [
 
   // ── GUAPDAD 4000 ─────────────────────────────────────────
   {
-    artist: "Guapdad 4000, Valentino Khan",
+    artist: "Guapdad 4000",
     title: "Fearless",
     album: "Fearless",
     role: "Recording Engineer",
@@ -651,7 +651,7 @@ export const CREDITS = [
 
   // ── RICH BRIAN ───────────────────────────────────────────
   {
-    artist: "Rich Brian, Charlotte Day Wilson, DAISY WORLD",
+    artist: "Rich Brian",
     title: "Is it? (feat. Charlotte Day Wilson & DAISY WORLD)",
     album: "WHERE IS MY HEAD?",
     role: "Recording Engineer",
@@ -800,7 +800,7 @@ export const CREDITS = [
   artist: "Masi Masi",
   title: "Lesser Men",
   album: "Lesser Men",
-  role: "Producer",
+  role: "Producer, Composer, Mixing Engineer",
   year: 2024,
   artworkSrc: "credits-artwork/masi-lesser-men.jpg",
   spotifyUrl: "https://open.spotify.com/track/2CokHp3qwRXksiAH1x5gQo"
@@ -809,7 +809,7 @@ export const CREDITS = [
   artist: "Masi Masi",
   title: "She's Trouble",
   album: "She's Trouble",
-  role: "Producer",
+  role: "Producer, Composer, Mixing Engineer",
   year: 2024,
   artworkSrc: "credits-artwork/masi-shes-trouble.jpg",
   spotifyUrl: "https://open.spotify.com/track/5xlh4dhvKz1vISotxVabOq"
@@ -818,7 +818,7 @@ export const CREDITS = [
   artist: "Masi Masi",
   title: "The Rain",
   album: "The Rain",
-  role: "Producer",
+  role: "Producer, Composer, Mixing Engineer",
   year: 2024,
   artworkSrc: "credits-artwork/masi-the-rain.jpg",
   spotifyUrl: "https://open.spotify.com/track/1ijYvBq8ibsVLViAJ3dAr4"
@@ -827,7 +827,7 @@ export const CREDITS = [
   artist: "Masi Masi",
   title: "The Cafe",
   album: "The Cafe",
-  role: "Producer",
+  role: "Producer, Composer, Mixing Engineer",
   year: 2024,
   artworkSrc: "credits-artwork/masi-the-cafe.jpg",
   spotifyUrl: "https://open.spotify.com/track/69GF7IHWu66s1UIYLR6fKz"
@@ -836,7 +836,7 @@ export const CREDITS = [
   artist: "Masi Masi",
   title: "Fools",
   album: "Fools",
-  role: "Producer",
+  role: "Producer, Composer, Mixing Engineer",
   year: 2024,
   artworkSrc: "credits-artwork/masi-fools.jpg",
   spotifyUrl: "https://open.spotify.com/track/6Nbv6OPdwTX28lZ4FIuDcP"
@@ -845,7 +845,7 @@ export const CREDITS = [
   artist: "Masi Masi",
   title: "Tell Me Where You Want Me",
   album: "Tell Me Where You Want Me",
-  role: "Producer",
+  role: "Producer, Composer, Mixing Engineer",
   year: 2024,
   artworkSrc: "credits-artwork/masi-tell-me.jpg",
   spotifyUrl: "https://open.spotify.com/track/1AWNk80iJVnqBCNy3Ytmik"

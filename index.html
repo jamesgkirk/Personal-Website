@@ -65,7 +65,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
 
@@ -133,6 +133,9 @@
         <p class="credit-modal__artist" id="modal-artist"></p>
         <p class="credit-modal__album" id="modal-album"></p>
         <p class="credit-modal__role" id="modal-role"></p>
+        <div class="credit-modal__songs-wrap" id="modal-songs-wrap">
+          <ul class="credit-modal__songs" id="modal-songs"></ul>
+        </div>
         <div class="credit-modal__spotify-wrap" id="modal-spotify-wrap"></div>
       </div>
     </div>
@@ -239,35 +242,22 @@
         </div>
       `;
 
-      // Click handler: mobile opens modal, desktop toggles overlay
+      // Click handler: always opens modal (desktop + mobile)
       card.addEventListener('click', (e) => {
         if (e.target.closest('.credit-card__spotify')) return;
-        if (window.matchMedia('(max-width: 768px)').matches) {
-          openModal({
-            artist: group.artist,
-            album: overlayLabel,
-            role: roles,
-            artworkSrc: group.artworkSrc,
-            spotifyUrl: group.spotifyUrl
-          });
-        } else {
-          const isActive = card.classList.contains('is-active');
-          document.querySelectorAll('.credit-card.is-active')
-            .forEach(c => c.classList.remove('is-active'));
-          if (!isActive) card.classList.add('is-active');
-        }
+        openModal({
+          artist: group.artist,
+          album: overlayLabel,
+          role: roles,
+          artworkSrc: group.artworkSrc,
+          spotifyUrl: group.spotifyUrl,
+          songs: isSingle ? [] : uniqueTitles.map(s => s.title)
+        });
       });
 
       grid.appendChild(card);
     });
 
-    // Dismiss active card on outside tap (desktop)
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.credit-card')) {
-        document.querySelectorAll('.credit-card.is-active')
-          .forEach(c => c.classList.remove('is-active'));
-      }
-    });
 
     // ---- Mobile modal logic ----
     const modal = document.getElementById('credit-modal');
@@ -277,11 +267,23 @@
     const modalRole = document.getElementById('modal-role');
     const modalSpotifyWrap = document.getElementById('modal-spotify-wrap');
 
-    function openModal({ artist, album, role, artworkSrc, spotifyUrl }) {
+    const modalSongsWrap = document.getElementById('modal-songs-wrap');
+    const modalSongs = document.getElementById('modal-songs');
+
+    function openModal({ artist, album, role, artworkSrc, spotifyUrl, songs }) {
       modalArt.style.backgroundImage = artworkSrc ? `url("${artworkSrc}")` : 'none';
       modalArtist.textContent = artist;
       modalAlbum.textContent = album;
       modalRole.textContent = role;
+      if (songs && songs.length > 0) {
+        modalSongs.innerHTML = songs.map(t => `<li class="credit-modal__song">${t}</li>`).join('');
+        modalSongsWrap.style.display = 'block';
+        modalSongsWrap.scrollTop = 0;
+        modalSongsWrap.classList.remove('is-scrolled-end');
+      } else {
+        modalSongs.innerHTML = '';
+        modalSongsWrap.style.display = 'none';
+      }
       modalSpotifyWrap.innerHTML = spotifyUrl
         ? `<a class="credit-modal__spotify"
               href="${spotifyUrl}"
@@ -311,6 +313,12 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    // Fade out scroll hint when list is fully scrolled
+    modalSongsWrap.addEventListener('scroll', () => {
+      const atEnd = modalSongsWrap.scrollHeight - modalSongsWrap.scrollTop <= modalSongsWrap.clientHeight + 2;
+      modalSongsWrap.classList.toggle('is-scrolled-end', atEnd);
     });
 
     // ---- IntersectionObserver fade-in ----
