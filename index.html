@@ -12,7 +12,7 @@
 
   <!-- Web fonts: Cormorant Garamond (display) + Inter (UI) -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&family=Montserrat:wght@300&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&family=Montserrat:wght@300;700&display=swap"
     rel="stylesheet"
   />
 
@@ -58,9 +58,10 @@
       text-align: center;
     }
     .site-hero__name {
-      font-family: 'Montserrat', system-ui, sans-serif; font-weight: 300;
-      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700;
+      font-size: clamp(1.6rem, 4.5vw, 3rem);
       letter-spacing: 0.08em; text-align: center; line-height: 1;
+      text-transform: uppercase;
     }
   </style>
 
@@ -103,6 +104,39 @@
       ></div>
     </section>
   </main>
+
+  <!-- ======================================================
+       MOBILE MODAL
+       ====================================================== -->
+  <div
+    class="credit-modal"
+    id="credit-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-album"
+  >
+    <div class="credit-modal__backdrop" data-modal-close></div>
+    <div class="credit-modal__panel" role="document">
+      <button
+        type="button"
+        class="credit-modal__close"
+        data-modal-close
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </button>
+      <div class="credit-modal__art" id="modal-art"></div>
+      <div class="credit-modal__content">
+        <p class="credit-modal__artist" id="modal-artist"></p>
+        <p class="credit-modal__album" id="modal-album"></p>
+        <p class="credit-modal__role" id="modal-role"></p>
+        <div class="credit-modal__spotify-wrap" id="modal-spotify-wrap"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- ======================================================
        FOOTER
@@ -205,23 +239,78 @@
         </div>
       `;
 
-      // Mobile tap: toggle overlay
-      card.addEventListener('click', () => {
-        const isActive = card.classList.contains('is-active');
-        document.querySelectorAll('.credit-card.is-active')
-          .forEach(c => c.classList.remove('is-active'));
-        if (!isActive) card.classList.add('is-active');
+      // Click handler: mobile opens modal, desktop toggles overlay
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.credit-card__spotify')) return;
+        if (window.matchMedia('(max-width: 768px)').matches) {
+          openModal({
+            artist: group.artist,
+            album: overlayLabel,
+            role: roles,
+            artworkSrc: group.artworkSrc,
+            spotifyUrl: group.spotifyUrl
+          });
+        } else {
+          const isActive = card.classList.contains('is-active');
+          document.querySelectorAll('.credit-card.is-active')
+            .forEach(c => c.classList.remove('is-active'));
+          if (!isActive) card.classList.add('is-active');
+        }
       });
 
       grid.appendChild(card);
     });
 
-    // Dismiss active card on outside tap
+    // Dismiss active card on outside tap (desktop)
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.credit-card')) {
         document.querySelectorAll('.credit-card.is-active')
           .forEach(c => c.classList.remove('is-active'));
       }
+    });
+
+    // ---- Mobile modal logic ----
+    const modal = document.getElementById('credit-modal');
+    const modalArt = document.getElementById('modal-art');
+    const modalArtist = document.getElementById('modal-artist');
+    const modalAlbum = document.getElementById('modal-album');
+    const modalRole = document.getElementById('modal-role');
+    const modalSpotifyWrap = document.getElementById('modal-spotify-wrap');
+
+    function openModal({ artist, album, role, artworkSrc, spotifyUrl }) {
+      modalArt.style.backgroundImage = artworkSrc ? `url("${artworkSrc}")` : 'none';
+      modalArtist.textContent = artist;
+      modalAlbum.textContent = album;
+      modalRole.textContent = role;
+      modalSpotifyWrap.innerHTML = spotifyUrl
+        ? `<a class="credit-modal__spotify"
+              href="${spotifyUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Listen on Spotify">
+             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.519 17.308a.75.75 0 01-1.032.25c-2.828-1.728-6.39-2.118-10.585-1.16a.75.75 0 11-.334-1.463c4.59-1.048 8.53-.597 11.7 1.342a.75.75 0 01.251 1.031zm1.473-3.276a.937.937 0 01-1.29.308c-3.236-1.99-8.167-2.566-11.99-1.405a.937.937 0 01-.543-1.794c4.37-1.325 9.8-.682 13.515 1.6a.937.937 0 01.308 1.29zm.127-3.408c-3.88-2.304-10.28-2.516-13.99-1.39a1.125 1.125 0 01-.652-2.152c4.252-1.29 11.32-1.04 15.789 1.608a1.125 1.125 0 01-1.147 1.934z"/>
+             </svg>
+             <span>Listen on Spotify</span>
+           </a>`
+        : '';
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target.closest('[data-modal-close]')) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
     });
 
     // ---- IntersectionObserver fade-in ----

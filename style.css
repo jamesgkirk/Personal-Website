@@ -146,12 +146,13 @@ a {
 
 .site-hero__name {
   font-family: var(--font-name);
-  font-weight: 300;
-  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4.5vw, 3rem);
   letter-spacing: 0.08em;
   text-align: center;
   color: var(--color-text);
   line-height: 1;
+  text-transform: uppercase;
 }
 
 .site-hero__tagline {
@@ -168,7 +169,6 @@ a {
    ============================================================ */
 .credits-section {
   padding: 0 clamp(1.25rem, 5vw, 3rem) var(--section-pad);
-  border-top: 1px solid var(--color-border);
 }
 
 .credits-section__label {
@@ -178,8 +178,8 @@ a {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-muted);
-  margin-bottom: 3rem;
-  padding-top: 3rem;
+  margin-bottom: 2rem;
+  padding-top: 0.5rem;
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -199,33 +199,23 @@ a {
   gap: var(--grid-gap);
 }
 
-@media (max-width: 540px) {
+/* Mobile: clean artwork-only grid (modal handles details) */
+@media (max-width: 768px) {
   .credits-grid {
     gap: 6px;
   }
 
+  /* Suppress all on-card overlay text & hover effects on mobile */
   .credit-card__overlay {
-    padding: 0.35rem;
-  }
-
-  .credit-card__artist {
-    font-size: 0.38rem;
-    letter-spacing: 0.06em;
-  }
-
-  .credit-card__album {
-    font-size: 0.52rem;
-    margin-top: 0.15rem;
-  }
-
-  .credit-card__role {
-    font-size: 0.32rem;
-    letter-spacing: 0.04em;
-    margin-top: 0.2rem;
-  }
-
-  .credit-card__songs-wrap {
     display: none;
+  }
+
+  .credit-card:hover .credit-card__artwork-wrap img,
+  .credit-card.is-active .credit-card__artwork-wrap img,
+  .credit-card:hover .credit-card__artwork-placeholder,
+  .credit-card.is-active .credit-card__artwork-placeholder {
+    filter: none;
+    transform: none;
   }
 }
 
@@ -519,6 +509,174 @@ a {
 .contact-instagram:focus-within .contact-instagram__img {
   border-color: var(--color-accent);
   opacity: 0.85;
+}
+
+/* ============================================================
+   MOBILE CREDIT MODAL
+   ============================================================ */
+.credit-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.credit-modal.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+.credit-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.credit-modal__panel {
+  position: relative;
+  width: min(92vw, 440px);
+  aspect-ratio: 1 / 1;
+  max-height: 88vh;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--color-surface);
+  transform: scale(0.96);
+  transition: transform 0.28s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.credit-modal.is-open .credit-modal__panel {
+  transform: scale(1);
+}
+
+.credit-modal__art {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(14px) brightness(0.35);
+  transform: scale(1.1);
+}
+
+.credit-modal__art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 14, 14, 0.35);
+}
+
+.credit-modal__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  gap: 0.6rem;
+}
+
+.credit-modal__artist {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.credit-modal__album {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--color-text);
+  max-width: 90%;
+}
+
+.credit-modal__role {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-top: 0.2rem;
+}
+
+.credit-modal__spotify-wrap {
+  margin-top: 1.4rem;
+}
+
+.credit-modal__spotify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.credit-modal__spotify:hover,
+.credit-modal__spotify:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.credit-modal__spotify svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-accent);
+}
+
+.credit-modal__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.credit-modal__close:hover,
+.credit-modal__close:focus-visible {
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .credit-modal,
+  .credit-modal__panel {
+    transition: none;
+  }
 }
 
 /* ============================================================
