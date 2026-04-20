@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>James Kirk — Audio Engineer</title>
+  <meta name="description" content="Mixing, mastering, and production credits." />
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Web fonts: Cormorant Garamond (display) + Inter (UI) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&family=Montserrat:wght@300&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Critical above-the-fold CSS inlined -->
+  <style>
+    :root {
+      --color-bg: #0e0e0e;
+      --color-surface: #161616;
+      --color-border: #2a2a2a;
+      --color-text: #e8e4dc;
+      --color-muted: #7a7570;
+      --color-accent: #6e7f80;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
+      --nav-h: 56px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-ui);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      background: transparent;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .nav__name {
+      font-family: 'Montserrat', system-ui, sans-serif; font-weight: 300;
+      font-size: 1.05rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-text); text-decoration: none;
+    }
+    .site-hero {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: calc(var(--nav-h) + 3.5rem) clamp(1.25rem, 5vw, 3rem) 3.5rem;
+      text-align: center;
+    }
+    .site-hero__name {
+      font-family: 'Montserrat', system-ui, sans-serif; font-weight: 300;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      letter-spacing: 0.08em; text-align: center; line-height: 1;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css?v=2" />
+</head>
+<body>
+
+  <!-- ======================================================
+       NAVIGATION
+       ====================================================== -->
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+    <a href="index.html" class="nav__name" aria-label="Home">James Kirk</a>
+    <ul class="nav__links" role="list">
+      <li><a href="#credits">Credits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ======================================================
+       HERO
+       ====================================================== -->
+  <header class="site-hero" aria-label="Site header">
+    <div class="site-hero__inner">
+      <h1 class="site-hero__name">James Kirk</h1>
+      <p class="site-hero__tagline">Engineer / Producer Residing in Los Angeles</p>
+    </div>
+  </header>
+
+  <!-- ======================================================
+       CREDITS
+       ====================================================== -->
+  <main>
+    <section class="credits-section" id="credits" aria-label="Credits">
+      <p class="credits-section__label" aria-hidden="true">Selected Work</p>
+      <div
+        class="credits-grid"
+        id="credits-grid"
+        role="list"
+        aria-label="Credit cards"
+      ></div>
+    </section>
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+  <footer class="site-footer" aria-label="Site footer">
+    <p>
+      <span id="footer-year"></span>
+      &nbsp;James Kirk. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- ======================================================
+       SCRIPTS
+       ====================================================== -->
+  <script type="module">
+    import { CREDITS } from './credits.js';
+
+    // ---- Group credits by artwork (same image = same album) ----
+    const groups = new Map();
+    CREDITS.forEach((credit, idx) => {
+      const key = credit.artworkSrc || `__solo__${idx}`;
+      if (!groups.has(key)) {
+        groups.set(key, {
+          artist: credit.artist,
+          album: credit.album,
+          artworkSrc: credit.artworkSrc,
+          year: credit.year,
+          spotifyUrl: credit.spotifyUrl || null,
+          songs: []
+        });
+      }
+      groups.get(key).songs.push({ title: credit.title, role: credit.role });
+    });
+
+    // ---- Render one card per group ----
+    const grid = document.getElementById('credits-grid');
+    const VISIBLE_SONGS = 5;
+    const SONG_LINE_PX = 0.6 * 1.9 * 16; // ~18.24px per song line
+    let cardIndex = 0;
+
+    groups.forEach((group) => {
+      const card = document.createElement('article');
+      card.className = 'credit-card';
+      card.setAttribute('role', 'listitem');
+      card.style.transitionDelay = `${cardIndex * 40}ms`;
+      cardIndex++;
+
+      const roles = [...new Set(group.songs.map(s => s.role))].join(', ');
+      const uniqueTitles = group.songs.filter((s, i, arr) =>
+        arr.findIndex(x => x.title === s.title) === i
+      );
+      const isSingle = uniqueTitles.length === 1;
+
+      const artworkHtml = group.artworkSrc
+        ? `<img src="${group.artworkSrc}"
+               alt="${group.artist} — ${group.album}"
+               width="600" height="600" loading="lazy" />`
+        : `<div class="credit-card__artwork-placeholder"
+               role="img"
+               aria-label="${group.artist} — ${group.album} placeholder"></div>`;
+
+      const scrollDist = Math.max(0, (uniqueTitles.length - VISIBLE_SONGS) * SONG_LINE_PX);
+      const scrollDur  = Math.max(3, uniqueTitles.length * 0.9).toFixed(1);
+
+      const songListHtml = !isSingle
+        ? `<div class="credit-card__songs-wrap">
+             <ul class="credit-card__songs" style="--song-scroll-dist:${scrollDist.toFixed(1)}px;--song-scroll-dur:${scrollDur}s">
+               ${uniqueTitles.map(s => `<li class="credit-card__song">${s.title}</li>`).join('')}
+             </ul>
+           </div>`
+        : '';
+
+      const overlayLabel = isSingle ? group.songs[0].title : group.album;
+
+      const spotifyBtn = group.spotifyUrl
+        ? `<a class="credit-card__spotify"
+              href="${group.spotifyUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Listen on Spotify"
+              onclick="event.stopPropagation()">
+             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.519 17.308a.75.75 0 01-1.032.25c-2.828-1.728-6.39-2.118-10.585-1.16a.75.75 0 11-.334-1.463c4.59-1.048 8.53-.597 11.7 1.342a.75.75 0 01.251 1.031zm1.473-3.276a.937.937 0 01-1.29.308c-3.236-1.99-8.167-2.566-11.99-1.405a.937.937 0 01-.543-1.794c4.37-1.325 9.8-.682 13.515 1.6a.937.937 0 01.308 1.29zm.127-3.408c-3.88-2.304-10.28-2.516-13.99-1.39a1.125 1.125 0 01-.652-2.152c4.252-1.29 11.32-1.04 15.789 1.608a1.125 1.125 0 01-1.147 1.934z"/>
+             </svg>
+           </a>`
+        : '';
+
+      card.innerHTML = `
+        <div class="credit-card__artwork-wrap">
+          ${artworkHtml}
+          <div class="credit-card__overlay">
+            <div class="credit-card__overlay-inner">
+              <p class="credit-card__artist">${group.artist}</p>
+              <p class="credit-card__album">${overlayLabel}</p>
+              <p class="credit-card__role">${roles}</p>
+              ${songListHtml}
+            </div>
+            ${spotifyBtn}
+          </div>
+        </div>
+      `;
+
+      // Mobile tap: toggle overlay
+      card.addEventListener('click', () => {
+        const isActive = card.classList.contains('is-active');
+        document.querySelectorAll('.credit-card.is-active')
+          .forEach(c => c.classList.remove('is-active'));
+        if (!isActive) card.classList.add('is-active');
+      });
+
+      grid.appendChild(card);
+    });
+
+    // Dismiss active card on outside tap
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.credit-card')) {
+        document.querySelectorAll('.credit-card.is-active')
+          .forEach(c => c.classList.remove('is-active'));
+      }
+    });
+
+    // ---- IntersectionObserver fade-in ----
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.credit-card').forEach((card) => {
+      observer.observe(card);
+    });
+
+    // ---- Sticky nav: hide on scroll down, show on scroll up ----
+    const nav = document.getElementById('site-nav');
+    let lastY = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          if (y > lastY && y > 80) {
+            nav.classList.add('nav--hidden');
+          } else {
+            nav.classList.remove('nav--hidden');
+          }
+          nav.classList.toggle('nav--scrolled', y > 20);
+          lastY = y;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // ---- Footer year ----
+    document.getElementById('footer-year').textContent =
+      '\u00A9\u00A0' + new Date().getFullYear();
+  </script>
+
+</body>
+</html>
