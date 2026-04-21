@@ -80,7 +80,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=14" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -121,7 +121,9 @@
   <header class="site-hero" aria-label="Site header">
     <div class="site-hero__inner">
       <h1 class="site-hero__name">James Kirk</h1>
-      <p class="site-hero__tagline">Engineer / Producer / Mixer<br>Based in LA</p>
+      <div class="site-hero__rule"></div>
+      <p class="site-hero__tagline">Recording Engineer &middot; Producer &middot; Mixer</p>
+      <p class="site-hero__location">Based in Los Angeles</p>
     </div>
   </header>
 
@@ -190,7 +192,7 @@
        SCRIPTS
        ====================================================== -->
   <script type="module">
-    import { CREDITS } from './credits.js';
+    import { CREDITS } from './credits.js?v=4';
 
     // ---- Group credits by artwork (same image = same album) ----
     const groups = new Map();
@@ -222,7 +224,7 @@
       card.style.transitionDelay = `${cardIndex * 40}ms`;
       cardIndex++;
 
-      const roles = [...new Set(group.songs.map(s => s.role))].join(', ');
+      const roles = [...new Set(group.songs.flatMap(s => s.role.split(', ')))].join(' / ');
       const uniqueTitles = group.songs.filter((s, i, arr) =>
         arr.findIndex(x => x.title === s.title) === i
       );
@@ -286,7 +288,7 @@
           role: roles,
           artworkSrc: group.artworkSrc,
           spotifyUrl: group.spotifyUrl,
-          songs: isSingle ? [] : uniqueTitles.map(s => s.title)
+          songs: isSingle ? [] : uniqueTitles
         });
       });
 
@@ -311,16 +313,28 @@
       modalAlbum.textContent = album;
       modalRole.textContent = role;
       if (songs && songs.length > 0) {
-        modalSongs.innerHTML = songs.map(t => `<li class="credit-modal__song">${t}</li>`).join('');
+        // Determine primary role (most common across songs)
+        const roleCounts = {};
+        songs.forEach(s => { roleCounts[s.role] = (roleCounts[s.role] || 0) + 1; });
+        const primaryRole = Object.keys(roleCounts).reduce((a, b) => roleCounts[a] >= roleCounts[b] ? a : b);
+        const primaryTokens = new Set(primaryRole.split(', '));
+
+        modalSongs.innerHTML = songs.map(s => {
+          const extras = s.role.split(', ').filter(t => !primaryTokens.has(t));
+          const badge = extras.length
+            ? ` <span class="credit-modal__song-badge">— ${extras.join(', ')}</span>`
+            : '';
+          return `<li class="credit-modal__song">${s.title}${badge}</li>`;
+        }).join('');
         modalSongsWrap.style.display = 'block';
         modalSongsWrap.scrollTop = 0;
         modalSongsWrap.classList.remove('is-scrolled-end');
-        // If content doesn't overflow, no scroll hint needed
-        requestAnimationFrame(() => {
+        // Double-rAF ensures layout is complete before measuring overflow
+        requestAnimationFrame(() => requestAnimationFrame(() => {
           if (modalSongsWrap.scrollHeight <= modalSongsWrap.clientHeight + 2) {
             modalSongsWrap.classList.add('is-scrolled-end');
           }
-        });
+        }));
       } else {
         modalSongs.innerHTML = '';
         modalSongsWrap.style.display = 'none';

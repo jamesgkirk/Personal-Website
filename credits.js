@@ -380,23 +380,78 @@ export const CREDITS = [
     artworkSrc: "credits-artwork/jean-blitz.jpg",
     spotifyUrl: "https://open.spotify.com/album/6sRDV6Sc4WR3tyT9VhYogM"
   },
+  // ── JEAN DAWSON — Rock A Bye Baby, Glimmer of God (2025) ─
   {
     artist: "Jean Dawson",
-    title: "The Modern Death of Bad News",
-    album: "The Modern Death of Bad News",
-    role: "Producer",
-    year: 2024,
-    artworkSrc: "credits-artwork/jean-modern-death-of-bad-news.jpg",
-    spotifyUrl: "https://open.spotify.com/track/7bfRi6ug2paTDhm9kHqY6v"
+    title: "GODISADJ",
+    album: "Rock A Bye Baby, Glimmer of God",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
   },
   {
     artist: "Jean Dawson",
     title: "Rock A Bye Baby",
-    album: "Rock A Bye Baby",
+    album: "Rock A Bye Baby, Glimmer of God",
     role: "Recording Engineer",
     year: 2025,
-    artworkSrc: "credits-artwork/jean-rock-a-bye-baby.jpg",
-    spotifyUrl: "https://open.spotify.com/track/2Y0fvcpV5pfIuXlgRgZimn"
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
+  },
+  {
+    artist: "Jean Dawson",
+    title: "Gospel",
+    album: "Rock A Bye Baby, Glimmer of God",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
+  },
+  {
+    artist: "Jean Dawson",
+    title: "Sin Sangre",
+    album: "Rock A Bye Baby, Glimmer of God",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
+  },
+  {
+    artist: "Jean Dawson",
+    title: "Witchcraft",
+    album: "Rock A Bye Baby, Glimmer of God",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
+  },
+  {
+    artist: "Jean Dawson",
+    title: "Prize Fighter",
+    album: "Rock A Bye Baby, Glimmer of God",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
+  },
+  {
+    artist: "Jean Dawson",
+    title: "White Lighter",
+    album: "Rock A Bye Baby, Glimmer of God",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
+  },
+  {
+    artist: "Jean Dawson",
+    title: "The Modern Death of Bad News",
+    album: "Rock A Bye Baby, Glimmer of God",
+    role: "Recording Engineer, Co-Producer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rab-glimmer.jpg",
+    spotifyUrl: "https://open.spotify.com/album/7KXoonGSm7oBWn267d5XPa"
   },
 
   // ── MGMT / CHRISTINE AND THE QUEENS ──────────────────────
@@ -464,7 +519,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "ECSTASY (feat. Bijan)",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -482,7 +537,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "NO GAMES (feat. DRAM)",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -491,16 +546,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "HOLD ME TIGHT (feat. Childish Major)",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
-    year: 2023,
-    artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
-    spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
-  },
-  {
-    artist: "Nnena",
-    title: "FUCK THEM HEAUXS",
-    album: "A WOMAN'S MIND",
-    role: "Recording Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -509,7 +555,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "FUN",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -518,7 +564,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "GREYSWEATSUIT (feat. B.K. Habermehl)",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -527,7 +573,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "WEEDLUDE",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -536,7 +582,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "INTRUSIVE THOUGHTS",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -545,7 +591,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "DISAPPEAR",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -554,7 +600,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "CRY",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -563,7 +609,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "TO FRIEND / FOE (feat. Justina Ego Adigwe)",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer, Producer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -572,7 +618,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "GOLD DIGGERS OUTRO (feat. Chidera Ike)",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
@@ -581,7 +627,7 @@ export const CREDITS = [
     artist: "Nnena",
     title: "ON ICE",
     album: "A WOMAN'S MIND",
-    role: "Mixing Engineer",
+    role: "Recording Engineer, Mixing Engineer",
     year: 2023,
     artworkSrc: "credits-artwork/nnena-a-womans-mind.jpg",
     spotifyUrl: "https://open.spotify.com/artist/0PpiNNCSKFjchmyHuCe0Pj"
