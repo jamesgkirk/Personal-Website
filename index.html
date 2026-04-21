@@ -280,6 +280,12 @@
         modalSongsWrap.style.display = 'block';
         modalSongsWrap.scrollTop = 0;
         modalSongsWrap.classList.remove('is-scrolled-end');
+        // If content doesn't overflow, no scroll hint needed
+        requestAnimationFrame(() => {
+          if (modalSongsWrap.scrollHeight <= modalSongsWrap.clientHeight + 2) {
+            modalSongsWrap.classList.add('is-scrolled-end');
+          }
+        });
       } else {
         modalSongs.innerHTML = '';
         modalSongsWrap.style.display = 'none';

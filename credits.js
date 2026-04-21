@@ -683,6 +683,15 @@ export const CREDITS = [
   },
   {
     artist: "Kate Nash",
+    title: "Space Odyssey 2001",
+    album: "9 Sad Symphonies",
+    role: "Engineer",
+    year: 2024,
+    artworkSrc: "credits-artwork/kate-9-sad-symphonies.jpg",
+    spotifyUrl: "https://open.spotify.com/album/56CrmLSJmxL6zDB02oAjQF"
+  },
+  {
+    artist: "Kate Nash",
     title: "These Feelings",
     album: "9 Sad Symphonies",
     role: "Engineer",
@@ -792,6 +801,48 @@ export const CREDITS = [
     year: 2025,
     artworkSrc: "credits-artwork/kun-what-a-day.jpg",
     spotifyUrl: "https://open.spotify.com/track/2bjz6oD7rexmUUXMtCCOo1"
+  },
+
+  // ── ALEMEDA ──────────────────────────────────────────────
+  {
+    artist: "Alemeda",
+    title: "1-800-F**K-YOU",
+    album: "1-800-F**K-YOU",
+    role: "Recording Engineer",
+    year: 2024,
+    artworkSrc: "credits-artwork/alemeda-1800-fk-you.jpg",
+    spotifyUrl: "https://open.spotify.com/track/69uj3dmNrUBIcRo3qW57dW"
+  },
+
+  // ── GAVIN HALEY ──────────────────────────────────────────
+  {
+    artist: "Gavin Haley",
+    title: "Cliche",
+    album: "i hate you, Don't Leave Me",
+    role: "Recording Engineer",
+    year: 2022,
+    artworkSrc: "credits-artwork/gavin-haley-i-hate-you.jpg",
+    spotifyUrl: "https://open.spotify.com/album/3RP0foR47mZ1epRWFlL68Z"
+  },
+  {
+    artist: "Gavin Haley",
+    title: "Nobody Else",
+    album: "i hate you, Don't Leave Me",
+    role: "Recording Engineer",
+    year: 2022,
+    artworkSrc: "credits-artwork/gavin-haley-i-hate-you.jpg",
+    spotifyUrl: "https://open.spotify.com/album/3RP0foR47mZ1epRWFlL68Z"
+  },
+
+  // ── JEAN DAWSON (Rock A Bye Baby) ─────────────────────────
+  {
+    artist: "Jean Dawson",
+    title: "Rock A Bye Baby",
+    album: "Rock A Bye Baby",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rock-a-bye-baby.jpg",
+    spotifyUrl: "https://open.spotify.com/track/2Y0fvcpV5pfIuXlgRgZimn"
   },
 
   // ── ADD NEW CREDITS BELOW THIS LINE ──────────────────────
