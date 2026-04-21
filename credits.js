@@ -389,6 +389,15 @@ export const CREDITS = [
     artworkSrc: "credits-artwork/jean-modern-death-of-bad-news.jpg",
     spotifyUrl: "https://open.spotify.com/track/7bfRi6ug2paTDhm9kHqY6v"
   },
+  {
+    artist: "Jean Dawson",
+    title: "Rock A Bye Baby",
+    album: "Rock A Bye Baby",
+    role: "Recording Engineer",
+    year: 2025,
+    artworkSrc: "credits-artwork/jean-rock-a-bye-baby.jpg",
+    spotifyUrl: "https://open.spotify.com/track/2Y0fvcpV5pfIuXlgRgZimn"
+  },
 
   // ── MGMT / CHRISTINE AND THE QUEENS ──────────────────────
   {
@@ -720,11 +729,11 @@ export const CREDITS = [
   {
     artist: "Kate Nash",
     title: "Millions of Heartbeats",
-    album: "Millions of Heartbeats",
+    album: "9 Sad Symphonies",
     role: "Engineer",
     year: 2024,
-    artworkSrc: "credits-artwork/kate-millions-of-heartbeats.jpg",
-    spotifyUrl: "https://open.spotify.com/album/23QUFcvieOos8BZfWBCvDt"
+    artworkSrc: "credits-artwork/kate-9-sad-symphonies.jpg",
+    spotifyUrl: "https://open.spotify.com/album/56CrmLSJmxL6zDB02oAjQF"
   },
 
   // ── JESS BEST ────────────────────────────────────────────
@@ -832,17 +841,6 @@ export const CREDITS = [
     year: 2022,
     artworkSrc: "credits-artwork/gavin-haley-i-hate-you.jpg",
     spotifyUrl: "https://open.spotify.com/album/3RP0foR47mZ1epRWFlL68Z"
-  },
-
-  // ── JEAN DAWSON (Rock A Bye Baby) ─────────────────────────
-  {
-    artist: "Jean Dawson",
-    title: "Rock A Bye Baby",
-    album: "Rock A Bye Baby",
-    role: "Recording Engineer",
-    year: 2025,
-    artworkSrc: "credits-artwork/jean-rock-a-bye-baby.jpg",
-    spotifyUrl: "https://open.spotify.com/track/2Y0fvcpV5pfIuXlgRgZimn"
   },
 
   // ── ADD NEW CREDITS BELOW THIS LINE ──────────────────────

@@ -11,7 +11,7 @@
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-ui:      'Inter', system-ui, sans-serif;
-  --font-name:    'Montserrat', system-ui, sans-serif;
+  --font-name:    'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
 
   --nav-h: 56px;
   --grid-gap: 24px;
@@ -146,7 +146,7 @@ a {
 
 .site-hero__name {
   font-family: var(--font-name);
-  font-weight: 700;
+  font-weight: 300;
   font-size: clamp(1.6rem, 4.5vw, 3rem);
   letter-spacing: 0.08em;
   text-align: center;
@@ -197,6 +197,14 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--grid-gap);
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .credits-grid {
+    max-width: 100%;
+  }
 }
 
 /* Mobile: clean artwork-only grid (modal handles details) */
