@@ -218,8 +218,9 @@
     let cardIndex = 0;
 
     groups.forEach((group) => {
+      const isHintCard = cardIndex < 3;
       const card = document.createElement('article');
-      card.className = 'credit-card';
+      card.className = isHintCard ? 'credit-card flip-hint' : 'credit-card';
       card.setAttribute('role', 'listitem');
       card.style.transitionDelay = `${cardIndex * 40}ms`;
       cardIndex++;
@@ -266,7 +267,13 @@
 
       card.innerHTML = `
         <div class="credit-card__artwork-wrap">
-          ${artworkHtml}
+          ${isHintCard ? `<div class="flip-hint__inner">
+            <div class="flip-hint__front">${artworkHtml}</div>
+            <div class="flip-hint__back" aria-hidden="true">
+              <div class="flip-hint__back-art" style="background-image:url('${group.artworkSrc}')"></div>
+              <p class="tap-hint-back__text">Tap for more info</p>
+            </div>
+          </div>` : artworkHtml}
           <div class="credit-card__overlay">
             <div class="credit-card__overlay-inner">
               <p class="credit-card__artist">${group.artist}</p>
@@ -282,6 +289,7 @@
       // Click handler: always opens modal (desktop + mobile)
       card.addEventListener('click', (e) => {
         if (e.target.closest('.credit-card__spotify')) return;
+        document.body.classList.add('hints-dismissed');
         openModal({
           artist: group.artist,
           album: overlayLabel,

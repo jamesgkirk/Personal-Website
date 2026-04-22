@@ -242,6 +242,77 @@ a {
     filter: none !important;
     transform: none !important;
   }
+
+  /* Card flip hint — perspective on artwork-wrap, inner rotates */
+  .flip-hint .credit-card__artwork-wrap {
+    perspective: 800px;
+    overflow: visible;
+  }
+
+  .flip-hint__inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    animation: card-flip 3.6s ease forwards;
+    animation-delay: 1.5s;
+  }
+
+  .flip-hint__front,
+  .flip-hint__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+  }
+
+  .flip-hint__front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .flip-hint__back {
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flip-hint__back-art {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px) brightness(0.35);
+    transform: scale(1.15);
+  }
+
+  .tap-hint-back__text {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-ui);
+    font-weight: 300;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+
+  .hints-dismissed .flip-hint__inner {
+    animation: none;
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes card-flip {
+  0%   { transform: rotateY(0deg); }
+  22%  { transform: rotateY(180deg); }
+  78%  { transform: rotateY(180deg); }
+  100% { transform: rotateY(0deg); }
 }
 
 /* ============================================================
@@ -418,6 +489,7 @@ a {
     height: 8px;
   }
 }
+
 
 /* ============================================================
    CONTACT PAGE
@@ -680,7 +752,7 @@ a {
   font-family: var(--font-ui);
   font-weight: 300;
   font-size: 0.7rem;
-  color: var(--color-muted);
+  color: #b8b4ac;
   line-height: 1.9;
   letter-spacing: 0.02em;
   text-align: center;
