@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact James Kirk — Recording Engineer, Producer &amp; Mixer | Los Angeles</title>
-  <meta name="description" content="Get in touch with James Kirk — freelance Recording Engineer, Producer, and Mixer based in Los Angeles, originally from the UK." />
+  <meta name="description" content="Get in touch with James Kirk — a London-born freelance Recording Engineer, Producer, and Mixer based in Los Angeles." />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.jamesgkirk.com/contact.html" />
@@ -14,12 +14,16 @@
   <meta property="og:url"         content="https://www.jamesgkirk.com/contact.html" />
   <meta property="og:site_name"   content="James Kirk" />
   <meta property="og:title"       content="Contact James Kirk — Recording Engineer, Producer &amp; Mixer" />
-  <meta property="og:description" content="Get in touch with James Kirk — freelance Recording Engineer, Producer, and Mixer based in Los Angeles, originally from the UK." />
+  <meta property="og:description" content="Get in touch with James Kirk — a London-born freelance Recording Engineer, Producer, and Mixer based in Los Angeles." />
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card"        content="summary" />
   <meta name="twitter:title"       content="Contact James Kirk — Recording Engineer, Producer &amp; Mixer" />
-  <meta name="twitter:description" content="Get in touch with James Kirk — freelance Recording Engineer, Producer, and Mixer based in Los Angeles, originally from the UK." />
+  <meta name="twitter:description" content="Get in touch with James Kirk — a London-born freelance Recording Engineer, Producer, and Mixer based in Los Angeles." />
+
+  <!-- Security headers (meta-deliverable subset; full set in _headers / vercel.json) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'self'; form-action 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,10 +62,10 @@
       height: var(--nav-h);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 clamp(1.25rem, 5vw, 3rem);
-      background: rgba(14, 14, 14, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
+      background: rgba(14, 14, 14, 0.45);
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
     .nav__name {
       font-family: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif; font-weight: 300;
@@ -144,10 +148,7 @@
   <!-- ======================================================
        SCRIPTS
        ====================================================== -->
-  <script>
-    document.getElementById('footer-year').textContent =
-      '\u00A9\u00A0' + new Date().getFullYear();
-  </script>
+  <script src="footer.js"></script>
 
 </body>
 </html>

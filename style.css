@@ -69,7 +69,7 @@ a {
   justify-content: space-between;
   padding: 0 clamp(1.25rem, 5vw, 3rem);
   background: transparent;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, background 0.4s ease, backdrop-filter 0.4s ease;
   will-change: transform;
 }
 
@@ -78,10 +78,10 @@ a {
 }
 
 .site-nav.nav--scrolled {
-  background: rgba(14, 14, 14, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(14, 14, 14, 0.45);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .nav__name {
