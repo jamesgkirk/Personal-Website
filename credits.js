@@ -653,6 +653,17 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/track/3pnIpJYrQOfKJbcUbJCMX2"
   },
 
+  // ── BROOKE ALEXX ─────────────────────────────────────────
+  {
+    artist: "Brooke Alexx",
+    title: "All My Exes' Moms",
+    album: "All My Exes' Moms",
+    role: "Recording Engineer",
+    year: 2022,
+    artworkSrc: "credits-artwork/brooke-alexx-all-my-exes-moms.jpg",
+    spotifyUrl: "https://open.spotify.com/track/3ikuDKc66w7CH9hRgc2KfX"
+  },
+
   // ── RUSTON KELLY ─────────────────────────────────────────
   {
     artist: "Ruston Kelly",
