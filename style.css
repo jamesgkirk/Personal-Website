@@ -832,6 +832,12 @@ a {
   border-color: var(--color-accent);
 }
 
+@media (max-width: 768px) {
+  .credit-modal__art {
+    filter: blur(11px) brightness(0.39) saturate(1.15);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .credit-modal__backdrop,
   .credit-modal__panel {
