@@ -25,6 +25,17 @@
 
 export const CREDITS = [
 
+  // ── DAHI ─────────────────────────────────────────────────
+  {
+    artist: "Dahi",
+    title: "Drowning (feat. Elmiene & Ravyn Lenae)",
+    album: "Black Boy (Alternative)",
+    role: "Recording Engineer",
+    year: 2026,
+    artworkSrc: "credits-artwork/dahi-black-boy-alternative.jpg",
+    spotifyUrl: "https://open.spotify.com/track/3PA3lTvvSyEM8jED6QEWqm"
+  },
+
   // ── LIZZO ────────────────────────────────────────────────
   {
     artist: "Lizzo",
