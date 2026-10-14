@@ -36,6 +36,16 @@ export const CREDITS = [
     spotifyUrl: "https://open.spotify.com/track/3PA3lTvvSyEM8jED6QEWqm"
   },
 
+  // ── NSQK ─────────────────────────────────────────────────
+  {
+    artist: "NSQK, Jean Dawson",
+    title: "Dientes De Fierro (feat. Jean Dawson)",
+    album: "Dientes De Fierro",
+    role: "Additional Vocal Recording Engineer",
+    year: 2026,
+    artworkSrc: "credits-artwork/nsqk-dientes-de-fierro.jpg"
+  },
+
   // ── LIZZO ────────────────────────────────────────────────
   {
     artist: "Lizzo",
